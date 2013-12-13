@@ -20,4 +20,10 @@ public class CalcTest {
 		int result = new Calc().add("2,3");
 		assertEquals(5,result);
 	}
+	
+	@Test
+	public void testUnknownAmountOfNumbers() {
+		int result = new Calc().add("2,3,5");
+		assertEquals(10,result);
+	}
 }
