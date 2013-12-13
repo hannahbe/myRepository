@@ -1,5 +1,9 @@
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class CalcTest {
 	
@@ -37,5 +41,15 @@ public class CalcTest {
 	public void testSupportDifferentDelimiters() {
 		int result = new Calc().add("//;\n2;3");
 		assertEquals(5,result);
+	}
+	
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
+	
+	@Test
+	public void testThrowException() {
+		exception.expect(Exception.class);
+		exception.expectMessage("negatives not allowed -2,-3");
+		new Calc().add("-2\n-3,5");
 	}
 }
