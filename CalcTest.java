@@ -32,4 +32,10 @@ public class CalcTest {
 		int result = new Calc().add("2\n3,5");
 		assertEquals(10,result);
 	}
+	
+	@Test
+	public void testSupportDifferentDelimiters() {
+		int result = new Calc().add("//;\n2;3");
+		assertEquals(5,result);
+	}
 }
