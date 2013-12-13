@@ -9,11 +9,18 @@ public class Calc {
 			return 0;
 		if (coma == -1)
 			return Integer.parseInt(numbers);
-		else {
-			int n1 = Integer.parseInt(numbers.substring(0, coma));
-			int n2 = Integer.parseInt(numbers.substring(coma+1, numbers.length()));
-			return n1+n2;
-		}
+		int from = 0;
+		int sum = Integer.parseInt(numbers.substring(from, coma));
+		from = coma+1;
+		do {
+			if ((coma=numbers.indexOf(COMA, from)) != -1) {
+				sum += Integer.parseInt(numbers.substring(from, coma));
+				from = coma+1;
+			}
+			else 
+				sum += Integer.parseInt(numbers.substring(from, numbers.length()));
+		} while (coma != -1);
+		return sum;
 	}
 	
 }
