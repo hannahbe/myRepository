@@ -26,4 +26,10 @@ public class CalcTest {
 		int result = new Calc().add("2,3,5");
 		assertEquals(10,result);
 	}
+	
+	@Test
+	public void testNewLinesBetweenNumbers() {
+		int result = new Calc().add("2\n3,5");
+		assertEquals(10,result);
+	}
 }
