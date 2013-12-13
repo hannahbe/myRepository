@@ -1,8 +1,10 @@
 
 public class Calc {
+	
+	public static final char COMA = ',';
 
 	public int add (String numbers) {
-		int coma=numbers.indexOf(",");
+		int coma=numbers.indexOf(COMA);
 		if (numbers.isEmpty())
 			return 0;
 		if (coma == -1)
@@ -13,4 +15,5 @@ public class Calc {
 			return n1+n2;
 		}
 	}
+	
 }
