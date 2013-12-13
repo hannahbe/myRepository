@@ -11,24 +11,16 @@ public class Calc {
 		do {
 			coma = numbers.indexOf(COMA, from);
 			newLine = numbers.indexOf(NEW_LINE, from);
-			if (coma != -1 && newLine != -1) {
-				if (coma < newLine)
-					delimiter = coma;
-				else
-					delimiter = newLine;
-				sum += Integer.parseInt(numbers.substring(from, delimiter));
-				from = delimiter+1;
-			}
-			else if (coma == -1 && newLine != -1) {
-				sum += Integer.parseInt(numbers.substring(from, newLine));
-				from = newLine+1;
-			}
-			else if (newLine == -1 && coma != -1) {
-				sum += Integer.parseInt(numbers.substring(from, coma));
-				from = coma+1;
-			}
-			else 
+			if (coma == -1 && newLine == -1) {
 				sum += Integer.parseInt(numbers.substring(from, numbers.length()));
+				break;
+			}
+			else if ((coma < newLine && coma != -1) || newLine == -1 && coma != -1)
+				delimiter = coma;
+			else
+				delimiter = newLine;
+			sum += Integer.parseInt(numbers.substring(from, delimiter));
+			from = delimiter+1;
 		} while (coma != -1);
 		return sum;
 	}
